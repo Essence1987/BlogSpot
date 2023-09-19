@@ -1,0 +1,11 @@
+{{> layouts/main}}
+
+{{#each posts}}
+  <div class="post">
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <p>Posted by {{author}} on {{formatDate created_at}}</p>
+    <!-- Add a link to view the full post -->
+    <a href="/posts/{{id}}">Read more</a>
+  </div>
+{{/each}}
