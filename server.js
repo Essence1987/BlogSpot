@@ -4,6 +4,7 @@ const sequelize = require('./config/config');
 const homeRoutes = require('./routes/homeRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const signupRoutes = require('./routes/signupRoutes');
+const loginRoutes = require('./routes/loginRoutes');
 const moment = require('moment');
 
 
@@ -29,6 +30,7 @@ app.set("views", "./views");
 app.use('/', homeRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/signup', signupRoutes);
+app.use('/login', loginRoutes);
 
 // Other routes and middleware will go here
 
