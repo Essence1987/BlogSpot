@@ -1,0 +1,33 @@
+{{> layouts/main}}
+
+<h2>Welcome user <!-- Will modify with the ${user} variable once i have it set up --> to your Dashboard</h2>
+
+<!-- Display existing blog posts -->
+{{#if posts.length}}
+  <h3>Users Blog Posts:</h3>
+  <ul>
+    {{#each posts}}
+      <li>
+        <h4>{{title}}</h4>
+        <p>{{content}}</p>
+        <p>Posted on {{formatDate created_at}}</p>
+        <!-- Add buttons to edit or delete posts -->
+        <a href="/edit/{{id}}">Edit</a> | <a href="/delete/{{id}}">Delete</a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You haven't created any blog posts yet.</p>
+{{/if}}
+
+<!-- Form to add a new blog post -->
+<h3>Add a New Blog Post</h3>
+<form method="POST" action="/create">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" required>
+  <br>
+  <label for="content">Content:</label>
+  <textarea id="content" name="content" required></textarea>
+  <br>
+  <button type="submit">Create Post</button>
+</form>
