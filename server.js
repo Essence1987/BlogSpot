@@ -3,6 +3,7 @@ const {engine} = require('express-handlebars');
 const sequelize = require('./config/config');
 const homeRoutes = require('./routes/homeRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const signupRoutes = require('./routes/signupRoutes');
 const moment = require('moment');
 
 
@@ -27,6 +28,7 @@ app.set("views", "./views");
 // Uses the homeRoutes.js file for the homepage
 app.use('/', homeRoutes);
 app.use('/dashboard', dashboardRoutes);
+app.use('/signup', signupRoutes);
 
 // Other routes and middleware will go here
 
