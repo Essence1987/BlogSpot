@@ -10,7 +10,7 @@ router.get('/dashboard', (req, res) => {
         { id: 2, title: 'Another Post', content: 'Another blog post content...', created_at: '2023-09-23' },
     ];
 
-    res.render('dashboard');
+    res.render('dashboard', { posts: userPosts });
 });
 
 module.exports = router;

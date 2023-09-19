@@ -1,14 +1,28 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
+const {engine} = require('express-handlebars');
 const sequelize = require('./config/config');
 const homeRoutes = require('./routes/homeRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const moment = require('moment');
+
 
 const app = express();
 
+// format dates helper with Handlebars
+const hbs = engine({
+    partialsDir: __dirname + '/views/layouts',
+    helpers: {
+      formatDate: function (date) {
+        return moment(date).format('MMMM DD, YYYY'); // Define desired date format
+      },
+    },
+  });
+
 // Set Handlebars as the template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', hbs);
 app.set('view engine', 'handlebars');
+app.set("views", "./views");
+
 
 // Uses the homeRoutes.js file for the homepage
 app.use('/', homeRoutes);
