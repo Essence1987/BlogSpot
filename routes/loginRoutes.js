@@ -44,4 +44,16 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Route handler for user logout
+router.get('/logout', (req, res) => {
+    // Clear the user session
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+        }
+        // Redirect the user to the login page after logout
+        res.redirect('/login');
+    });
+});
+
 module.exports = router;
